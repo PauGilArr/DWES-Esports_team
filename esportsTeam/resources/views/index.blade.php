@@ -7,12 +7,12 @@
 @section('content')
     <img src="/images/teamlogo.svg" alt="Sahara Force India F1 Team Logo">
     <p>
-        IN THE ELEVEN YEARS OF OUR HISTORY, FORCE INDIA HAS GROWN TO BECOME ONE OF THE TEAMS FIGHTING AT THE SHARP END OF THE FORMULA ONE GRID.
+        EN LOS ONCE AÑOS DE NUESTRA HISTORIA, FORCE INDIA HA CRECIDO HASTA CONVERTIRSE EN UNO DE LOS EQUIPOS QUE LUCHA EN EL EXTREMO PUNTO DE LA PARRILLA DE FÓRMULA UNO.
     </p>
     <p>
-        We are a team of true racers, driven by a passion for motorsport and the desire to succeed in the world's most competitive environment. From the glittering lights of the world's finest circuits to our Silverstone HQ, our pursuit of excellence presents us with daily challenges.
+        Somos un equipo de verdaderos corredores, impulsados por la pasión por los deportes de motor y el deseo de triunfar en el entorno más competitivo del mundo. Desde las brillantes luces de los mejores circuitos del mundo hasta nuestra sede en Silverstone, nuestra búsqueda de la excelencia nos presenta desafíos diarios.
     </p>
     <p>
-        Formula One is a team sport, one that requires the effort of everyone in our workforce. Get to know our drivers, Sergio Perez and Esteban Ocon, and the men and women behind the team's quest for success.
+        La Fórmula Uno es un deporte de equipo, que requiere el esfuerzo de todos en nuestra fuerza laboral. Conozca a nuestros pilotos, Sergio Pérez y Esteban Ocon, y a los hombres y mujeres detrás de la búsqueda del éxito del equipo.
     </p>
 @endsection
