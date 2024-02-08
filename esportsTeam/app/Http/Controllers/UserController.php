@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class EventController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +21,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        //
     }
 
     /**
@@ -34,15 +35,18 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show(User $user)
     {
-        //
+        if ($user->name != Auth::user()->name) {
+            return redirect()->route('index');
+        }
+        return view('users.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
+    public function edit(User $user)
     {
         //
     }
@@ -50,7 +54,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -58,7 +62,7 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(User $user)
     {
         //
     }

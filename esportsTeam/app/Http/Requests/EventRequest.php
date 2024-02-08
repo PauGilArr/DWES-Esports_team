@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules;
 
-class SignupRequest extends FormRequest
+class EventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,10 +22,7 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
-            'email' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
-            'birthday' => ['required', 'date', 'before:today'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            //
         ];
     }
 }

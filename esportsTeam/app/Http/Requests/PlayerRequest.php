@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules;
 
-class SignupRequest extends FormRequest
+class PlayerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +22,18 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
-            'email' => ['required', 'string', 'min:5', 'max:20', 'unique:users'],
-            'birthday' => ['required', 'date', 'before:today'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => ['required', 'unique:players,name'],
+            'age' => ['required', 'numeric', 'min:0'],
+            'poles' => ['required', 'numeric'],
+            'victories' => ['required', 'numeric'],
+            'visibility' => 'boolean',
+
+        ];
+    }
+
+    public function messages(): array {
+        return [
+
         ];
     }
 }
