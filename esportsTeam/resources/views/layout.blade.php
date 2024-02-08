@@ -13,6 +13,7 @@
         @include('partials.teamlogo')
         @include('partials.nav')
     </header>
+    @yield('h1')
     @yield('content')
     @include('partials.footer')
 </body>
