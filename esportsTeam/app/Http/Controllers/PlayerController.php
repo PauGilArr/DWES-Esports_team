@@ -13,7 +13,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        $players = Player::where('visible', 1)->get();
+        return view('players.index', compact('players'));
     }
 
     /**
@@ -33,12 +34,13 @@ class PlayerController extends Controller
         $player->name = $request->get('name');
         $player->age = $request->get('age');
         $player->poles = $request->get('poles');
-        $player->victories = $request->get('victories');
+        $player->wins = $request->get('wins');
         $player->twitter = $request->get('twitter');
         $player->instagram = $request->get('instagram');
         $player->twitch = $request->get('twitch');
-        $player->visibility = $request->has('visibility') ? 1 : 0;
+        $player->visible = $request->has('visible') ? 1 : 0;
         $player->save();
+        $request->file('photo')->storeAs('public', $player->name .'.png');
 
         return view('players.stored', compact('player'));
     }

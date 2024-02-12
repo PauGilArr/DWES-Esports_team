@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('players.store') }}" method="post">
+    <form action="{{ route('players.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <label for="name">Nombre:</label>
@@ -16,22 +16,22 @@
         <br>
 
         <label for="age">Edad:</label>
-        <input type="number" name="age" id="age">
+        <input type="number" name="age" id="age" value="{{ old('age')}}">
         @error('age')
             <br>Error: {{ $message }}
         @enderror
         <br>
 
         <label for="poles">Poles:</label>
-        <input type="number" name="poles" id="poles">
+        <input type="number" name="poles" id="poles" value="{{ old('poles') }}">
         @error('poles')
             <br>Error: {{ $message }}
         @enderror
         <br>
 
-        <label for="victories">Victorias:</label>
-        <input type="number" name="victories" id="victories">
-        @error('victories')
+        <label for="wins">Victorias:</label>
+        <input type="number" name="wins" id="wins" value="{{ old('wins') }}">
+        @error('wins')
             <br>Error: {{ $message }}
         @enderror
         <br>
@@ -57,9 +57,15 @@
         @enderror
         <br>
 
-        <label for="visibility">Visible:</label>
-        <input type="checkbox" name="visibility" id="visibility">
-        @error('visibility')
+        <label for="photo">Foto</label>
+        <input type="file" name="photo" id="photo">
+        @error('photo')
+            <br>Error: {{ $message }}
+        @enderror
+        <br>
+        <label for="visible">Visible:</label>
+        <input type="checkbox" name="visible" id="visible">
+        @error('visible')
             <br>Error: {{ $message }}
         @enderror
         <br>
