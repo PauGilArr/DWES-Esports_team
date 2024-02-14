@@ -30,6 +30,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Terminar de pulir los enlaces.
 Route::resource('users', UserController::class);
+Route::get('players/{player}/visible', [PlayerController::class, 'makeVisibleInvisible'])->name('players.make_visible_invisible');
 Route::resource('players', PlayerController::class);
 Route::resource('events', EventController::class);
 Route::resource('messages', MessageController::class);

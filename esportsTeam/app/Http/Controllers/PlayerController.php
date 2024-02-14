@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PlayerRequest;
 
 class PlayerController extends Controller
@@ -13,7 +14,12 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::where('visible', 1)->get();
+        if (Auth::check() && Auth::user()->rol == 'admin') {
+            $players = Player::all();
+        } else {
+            $players = Player::where('visible', 1)->get();
+        }
+
         return view('players.index', compact('players'));
     }
 
@@ -50,7 +56,7 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-        //
+        return view('players.show', compact('player'));
     }
 
     /**
@@ -66,7 +72,7 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+
     }
 
     /**
@@ -75,5 +81,17 @@ class PlayerController extends Controller
     public function destroy(Player $player)
     {
         //
+    }
+
+    public function makeVisibleInvisible(Player $player) {
+        if ($player->visible == 1) {
+            $player->visible = 0;
+            $player->save();
+        } else {
+            $player->visible = 1;
+            $player->save();
+        }
+
+        return view('players.show', compact('player'));
     }
 }
