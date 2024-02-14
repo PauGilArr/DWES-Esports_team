@@ -1,24 +1,22 @@
 @extends('layout')
 
 @section('title')
-    Jugadores del equipo Sahara Force India F1 Team
+    Próximos eventos de  Sahara Force India F1 Team
 @endsection
 
 @section('content')
     @auth
-        @foreach ($players as $player)
-            <a href="{{ route('players.show', $player)}}">
+        @foreach ($events as $event)
+            <a href="{{ route('events.show', $event)}}">
                 <div>
-                    <img src="/storage/{{ $player->name }}.png" alt="{{ $player->name }} image">
-                    <div class="name">{{$player->name}}</div>
+                    <div class="name">{{$event->name}}</div>
                 </div>
             </a>
         @endforeach
     @else
-        @foreach ($players as $player)
+        @foreach ($events as $event)
             <div>
-                <img src="/storage/{{ $player->name }}.png" alt="{{ $player->name }} image">
-                <div class="name">{{$player->name}}</div>
+                <div class="name">{{$event->name}}</div>
             </div>
         @endforeach
     @endauth
