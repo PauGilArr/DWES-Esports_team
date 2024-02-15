@@ -22,7 +22,30 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'unique:events,name', 'max:15'],
+            'description' => ['required'],
+            'location' => ['required'],
+            'date' => ['required', 'date'],
+            'hour' => ['required'],
+            'type' => ['required'],
+            'tags' => ['required'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'El nombre del evento es obligatorio',
+            'name.string' => 'Tiene que ser una cadena de texto',
+            'name.unique' => 'Ese nombre de evento ya existe',
+            'name.max' => 'Supera la longitud máxima de 15 caracteres',
+            'description.required' => 'La descripcción del evento es obligatoria',
+            'location.required' => 'la localización del evento es obligatoria',
+            'date.required' => 'La fecha del evento es obligatoria',
+            //'date.date' => 'es obligatorio',
+            'hour.required' => 'La hora a la que se hace el evento es obligatoria',
+            'type.required' => 'El tipo de evento es obligatorio',
+            //'tags.required' => 'es obligatorio'
         ];
     }
 }

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Próximos eventos de  Sahara Force India F1 Team
+    Jugadores de  Sahara Force India F1 Team
 @endsection
 
 @section('content')

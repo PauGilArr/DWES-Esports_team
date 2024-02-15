@@ -30,7 +30,8 @@ class PlayerRequest extends FormRequest
         ];
     }
 
-    public function messages(): array {
+    public function messages(): array
+    {
         return [
             'name.required' => 'El nombre del jugador es obligatorio',
             'name.unique' => 'Ese nombre de jugador ya existe',

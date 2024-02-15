@@ -12,7 +12,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check() && Auth::user()->rol == 'admin') {
+            $events = Event::all();
+        } else {
+            $events = Event::where('visible', 1)->get();
+        }
+
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -36,7 +42,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('events.show', compact('event'));
     }
 
     /**
