@@ -6,17 +6,18 @@
 
 @section('content')
     @auth
-        @foreach ($events as $event)
-            <a href="{{ route('events.show', $event)}}">
+        @foreach ($players as $player)
+            <a href="{{ route('players.show', $player)}}">
                 <div>
-                    <div class="name">{{$event->name}}</div>
+                    <img src="/storage/{{ $player->name }}.png" alt="Imagen de {{ $player->name }}">
+                    <div class="name">{{ $player->name }}</div>
                 </div>
             </a>
         @endforeach
     @else
-        @foreach ($events as $event)
+        @foreach ($players as $player)
             <div>
-                <div class="name">{{$event->name}}</div>
+                <div class="name">{{$player->name}}</div>
             </div>
         @endforeach
     @endauth
