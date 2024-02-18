@@ -24,8 +24,8 @@ class IsAdmin
         }
 
         // Si el usuario no tiene el rol "admin", redireccionar al inicio
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('home');
+        if (!Auth::user()->rol == 'admin') {
+            return redirect()->route('index');
         }
 
         // Si el usuario tiene el rol "admin", continuar con la siguiente solicitud
