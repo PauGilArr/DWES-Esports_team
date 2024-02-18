@@ -48,7 +48,7 @@ class PlayerController extends Controller
         $player->save();
         $request->file('photo')->storeAs('public', $player->name .'.png');
 
-        return view('players.stored', compact('player'));
+        return view('players.show', compact('player'));
     }
 
     /**
