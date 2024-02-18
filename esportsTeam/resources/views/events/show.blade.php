@@ -11,21 +11,17 @@
 @section('content')
 <p>{{ $event->description }}</p>
 <ul>
-    <li>Edad: {{ $event->age }}</li>
-    <li>Poles: {{ $event->poles }}</li>
-    <li>Victorias: {{ $event->victories }}</li>
-    @if ($event->twitter)
-        <li>Twitter: {{ $event->twitter }}</li>
-    @endif
-    @if ($event->instagram)
-        <li>Instagram: {{ $event->instagram }}</li>
-    @endif
-    @if ($event->twitch)
-        <li>Twitch: {{ $event->twitch }}</li>
-    @endif
+    <li>Localización: {{ $event->location }}</li>
+    <li>Fecha: {{ $event->date }}</li>
+    <li>Hora: {{ $event->hour }}</li>
+    <li>Tipo: {{ $event->type }}</li>
+    <li>Etiquetas: {{ $event->tags }}</li>
+</ul>
     @auth
-        @if (Auth::user()->rol == 'admin')
+        @if ($event->users->contains(Auth::user()))
+            <a href="{{ route('events.like', $event)}}">Retirar like</a>
+        @else
+            <a href="{{ route('events.like', $event)}}">Dar like</a>
         @endif
     @endauth
-</ul>
 @endsection

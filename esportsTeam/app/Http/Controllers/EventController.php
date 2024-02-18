@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -32,9 +34,20 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $event = new Event();
+        $event->name = $request->get('name');
+        $event->description = $request->get('description');
+        $event->location = $request->get('location');
+        $event->date = $request->get('date');
+        $event->hour = $request->get('hour');
+        $event->type = $request->get('type');
+        $event->tags = $request->get('tags');
+        $event->visible = $request->has('visible') ? 1 : 0;
+        $event->save();
+
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -50,15 +63,25 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event->name = $request->get('name');
+        $event->description = $request->get('description');
+        $event->location = $request->get('location');
+        $event->date = $request->get('date');
+        $event->hour = $request->get('hour');
+        $event->type = $request->get('type');
+        $event->tags = $request->get('tags');
+        $event->visible = $request->has('visible') ? 1 : 0;
+        $event->save();
+
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -66,6 +89,27 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('events.index');
+    }
+
+    /**
+     * Hace que el evento sea visible o invisible para los usuarios que no son administradores.
+     */
+    public function makeVisibleInvisible(Event $event) {
+        if ($event->visible == 1) {
+            $event->visible = 0;
+            $event->save();
+        } else {
+            $event->visible = 1;
+            $event->save();
+        }
+
+        return redirect()->route('events.index');
+    }
+
+    public function eventLike(Event $event) {
+        $event->users()->toggle(Auth::user()->id);
+        return redirect()->back();
     }
 }

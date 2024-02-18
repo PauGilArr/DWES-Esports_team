@@ -11,7 +11,7 @@ class EventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,15 +21,34 @@ class EventRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => ['required', 'string', 'unique:events,name', 'max:15'],
-            'description' => ['required'],
-            'location' => ['required'],
-            'date' => ['required', 'date'],
-            'hour' => ['required'],
-            'type' => ['required'],
-            'tags' => ['required'],
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                $rules = [
+                    'name' => ['required', 'string', 'unique:events,name', 'max:15'],
+                    'description' => ['required'],
+                    'location' => ['required'],
+                    'date' => ['required', 'date'],
+                    'hour' => ['required'],
+                    'type' => ['required'],
+                    'tags' => ['required'],
+                ];
+
+                break;
+
+            case 'PUT':
+                $rules = [
+                    'name' => ['required', 'string', 'max:15'],
+                    'description' => ['required'],
+                    'location' => ['required'],
+                    'date' => ['required', 'date'],
+                    'hour' => ['required'],
+                    'type' => ['required'],
+                    'tags' => ['required'],
+                ];
+
+                break;
+        }
+        return $rules;
     }
 
     public function messages(): array
