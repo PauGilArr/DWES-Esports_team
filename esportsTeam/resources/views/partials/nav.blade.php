@@ -3,7 +3,7 @@
     <a href="{{ route('players.index')}}">Jugadores</a>
     <a href="{{ route('events.index')}}">Eventos</a>
     <a href="{{ route('index')}}">Tienda</a>
-    <a href="{{ route('messages.index')}}">Contacto</a>
+    <a href="{{ route('messages.create')}}">Contacto</a>
     <a href="{{ route('index')}}">¿Donde estamos?</a>
     @auth
         <a href="{{ route('users.show', Auth::user())}}">Ver perfil</a>

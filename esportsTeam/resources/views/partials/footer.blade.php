@@ -6,6 +6,6 @@
         <a href="{{ route('index')}}">Configuración de cookies</a>
         <a href="{{ route('index')}}">Políticas de privacidad</a>
         <a href="{{ route('index')}}">Términos y condiciones de uso</a>
-        <a href="{{ route('index')}}">Contacto</a>
+        <a href="{{ route('messages.create')}}">Contacto</a>
     </div>
 </footer>
