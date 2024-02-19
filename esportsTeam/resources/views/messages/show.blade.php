@@ -18,5 +18,10 @@
         <h2>Texto: </h2>
         <p>{{$message->text}}</p>
     </div>
+    <form action="{{ route('messages.destroy', $message)}}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit">Borrar mensaje</button>
+    </form>
 </article>
 @endsection

@@ -7,7 +7,14 @@
 @section('content')
     <ul>
         @foreach ($messages as $message)
-            <li><a href="{{ route('messages.show', $message)}}">{{$message->name}} - {{$message->subject}}</a></li>
+            <li>
+                <a href="{{ route('messages.show', $message)}}">
+                    {{$message->name}} - {{$message->subject}}
+                    @if ($message->read == 0)
+                        (Pendiente)
+                    @endif
+                </a>
+            </li>
         @endforeach
     </ul>
 @endsection
