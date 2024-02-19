@@ -4,6 +4,10 @@
     Añadir piloto
 @endsection
 
+@section('h1')
+    <h1>Añadir piloto:</h1>
+@endsection
+
 @section('content')
     <form action="{{ route('players.store') }}" method="post" enctype="multipart/form-data">
         @csrf

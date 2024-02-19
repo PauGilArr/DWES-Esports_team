@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('title')
-    Próximos eventos de Sahara Force India F1 Team
+    Próximos eventos - Sahara Force India F1 Team
+@endsection
+
+@section('h1')
+    <h1>Próximos eventos:</h1>
 @endsection
 
 @section('content')

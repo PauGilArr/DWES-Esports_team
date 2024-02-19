@@ -4,6 +4,10 @@
     Editar evento
 @endsection
 
+@section('title')
+    <h1>Editar evento:</h1>
+@endsection
+
 @section('content')
     <form action="{{ route('events.update', $event) }}" method="post">
         @csrf

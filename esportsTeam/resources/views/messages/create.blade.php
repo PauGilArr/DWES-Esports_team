@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('title')
-    Añadir evento
+    Enviar mensaje - Sahara Force India F1 Team
+@endsection
+
+@section('h1')
+    <h1>Enviar mensaje:</h1>
 @endsection
 
 @section('content')

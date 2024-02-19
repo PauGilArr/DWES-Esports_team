@@ -37,9 +37,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        if ($user->name != Auth::user()->name) {
-            return redirect()->route('index');
-        }
         return view('users.show', compact('user'));
     }
 

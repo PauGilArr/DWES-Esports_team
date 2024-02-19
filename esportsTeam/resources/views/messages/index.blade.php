@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('title')
-    Mensajes - Sahara Force India F1 Team
+    Mensajes
+@endsection
+
+@section('h1')
+    <h1>Mensajes</h1>
 @endsection
 
 @section('content')

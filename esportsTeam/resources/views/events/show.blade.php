@@ -5,7 +5,7 @@
 @endsection
 
 @section('h1')
-    <h1>{{$event->name}}</h1>
+    <h1>{{$event->name}}:</h1>
 @endsection
 
 @section('content')

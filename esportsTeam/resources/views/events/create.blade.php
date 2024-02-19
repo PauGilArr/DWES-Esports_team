@@ -4,6 +4,10 @@
     Añadir evento
 @endsection
 
+@section('title')
+    <h1>Añadir evento:</h1>
+@endsection
+
 @section('content')
     <form action="{{ route('events.store') }}" method="post">
         @csrf
