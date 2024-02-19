@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ Route::get('events/{event}/visible', [EventController::class, 'makeVisibleInvisi
 Route::get('events/{event}/like', [EventController::class, 'eventLike'])->name('events.like')->middleware('auth');
 Route::resource('events', EventController::class);
 Route::resource('messages', MessageController::class);
+Route::resource('products', ProductController::class)->only('index');

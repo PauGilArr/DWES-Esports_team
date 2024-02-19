@@ -2,7 +2,7 @@
     <a href="{{ route('index')}}">Inicio</a>
     <a href="{{ route('players.index')}}">Jugadores</a>
     <a href="{{ route('events.index')}}">Eventos</a>
-    <a href="{{ route('index')}}">Tienda</a>
+    <a href="{{ route('products.index')}}">Tienda</a>
     <a href="{{ route('messages.create')}}">Contacto</a>
     <a href="{{ route('index')}}">¿Donde estamos?</a>
     @auth
