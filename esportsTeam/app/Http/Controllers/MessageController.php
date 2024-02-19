@@ -44,6 +44,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+        if ($message->read == 0) {
+            $message->read = 1;
+        }
         return view('messages.show', compact('message'));
     }
 
