@@ -17,6 +17,13 @@
                     <div class="name">{{ $player->name }}</div>
                 </div>
             </a>
+            @if (Auth::user()->rol == 'admin')
+                @if ($player->visible == 0)
+                    <li><a href="{{ route('players.make_visible_invisible', $player) }}">Hacer visible</a></li>
+                @else
+                    <li><a href="{{ route('players.make_visible_invisible', $player) }}">Hacer invisible</a></li>
+                @endif
+            @endif
         @endforeach
     @else
         @foreach ($players as $player)

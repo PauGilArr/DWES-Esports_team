@@ -14,7 +14,7 @@
             <li>
                 <a href="{{ route('messages.show', $message)}}">
                     {{$message->name}} - {{$message->subject}}
-                    @if ($message->read == 0)
+                    @if ($message->readed == 0)
                         (Pendiente)
                     @endif
                 </a>

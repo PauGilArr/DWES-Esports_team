@@ -92,6 +92,6 @@ class PlayerController extends Controller
             $player->save();
         }
 
-        return view('players.show', compact('player'));
+        return redirect()->back();
     }
 }

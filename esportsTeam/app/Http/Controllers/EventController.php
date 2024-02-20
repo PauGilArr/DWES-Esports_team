@@ -17,7 +17,8 @@ class EventController extends Controller
         if (Auth::check() && Auth::user()->rol == 'admin') {
             $events = Event::all();
         } else {
-            $events = Event::where('visible', 1)->get();
+            $events = Event::where('date', '>', date('Y-m-d', time()))
+            ->where('visible', 1)->get();
         }
 
         return view('events.index', compact('events'));
@@ -96,7 +97,8 @@ class EventController extends Controller
     /**
      * Hace que el evento sea visible o invisible para los usuarios que no son administradores.
      */
-    public function makeVisibleInvisible(Event $event) {
+    public function makeVisibleInvisible(Event $event)
+    {
         if ($event->visible == 1) {
             $event->visible = 0;
             $event->save();
@@ -105,10 +107,11 @@ class EventController extends Controller
             $event->save();
         }
 
-        return redirect()->route('events.index');
+        return redirect()->back();
     }
 
-    public function eventLike(Event $event) {
+    public function eventLike(Event $event)
+    {
         $event->users()->toggle(Auth::user()->id);
         return redirect()->back();
     }

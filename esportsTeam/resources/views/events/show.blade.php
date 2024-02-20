@@ -23,5 +23,12 @@
         @else
             <a href="{{ route('events.like', $event)}}">Dar like</a>
         @endif
+        @if (Auth::user()->rol == 'admin')
+            @if ($event->visible == 0)
+                <a href="{{ route('events.make_visible_invisible', $event) }}">Hacer visible</a>
+            @else
+                <a href="{{ route('events.make_visible_invisible', $event) }}">Hacer invisible</a>
+            @endif
+        @endif
     @endauth
 @endsection

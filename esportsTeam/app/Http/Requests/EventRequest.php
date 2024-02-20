@@ -21,50 +21,36 @@ class EventRequest extends FormRequest
      */
     public function rules(): array
     {
-        switch ($this->method()) {
-            case 'POST':
-                $rules = [
-                    'name' => ['required', 'string', 'unique:events,name', 'max:15'],
-                    'description' => ['required'],
-                    'location' => ['required'],
-                    'date' => ['required', 'date'],
-                    'hour' => ['required'],
-                    'type' => ['required'],
-                    'tags' => ['required'],
-                ];
-
-                break;
-
-            case 'PUT':
-                $rules = [
-                    'name' => ['required', 'string', 'max:15'],
-                    'description' => ['required'],
-                    'location' => ['required'],
-                    'date' => ['required', 'date'],
-                    'hour' => ['required'],
-                    'type' => ['required'],
-                    'tags' => ['required'],
-                ];
-
-                break;
-        }
-        return $rules;
+        return [
+            'name' => ['required', 'string', 'max:15'],
+            'description' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'date'],
+            'hour' => ['required'],
+            'type' => ['required'],
+            'tags' => ['required', 'string', 'max:255']
+        ];
     }
 
     public function messages(): array
     {
         return [
-            'name.required' => 'El nombre del evento es obligatorio',
+            'name.required' => 'Este campo es obligatorio',
             'name.string' => 'Tiene que ser una cadena de texto',
-            'name.unique' => 'Ese nombre de evento ya existe',
             'name.max' => 'Supera la longitud máxima de 15 caracteres',
-            'description.required' => 'La descripcción del evento es obligatoria',
-            'location.required' => 'la localización del evento es obligatoria',
-            'date.required' => 'La fecha del evento es obligatoria',
-            //'date.date' => 'es obligatorio',
-            'hour.required' => 'La hora a la que se hace el evento es obligatoria',
-            'type.required' => 'El tipo de evento es obligatorio',
-            //'tags.required' => 'es obligatorio'
+            'description.required' => 'Este campo es obligatorio',
+            'description.string' => 'Tiene que ser una cadena de texto',
+            'description.max' => 'Supera la longitud máxima de 255 caracteres',
+            'location.required' => 'Este campo es obligatorio',
+            'location.string' => 'Tiene que ser una cadena de texto',
+            'location.max' => 'Supera la longitud máxima de 255 caracteres',
+            'date.required' => 'Este campo es obligatorio',
+            'date.date' => 'Tiene que ser una fecha válida',
+            'hour.required' => 'Este campo es obligatorio',
+            'type.required' => 'Este campo es obligatorio',
+            'tags.required' => 'Este campo es obligatorio',
+            'tags.string' => 'Tiene que ser una cadena de texto',
+            'tags.max' => 'Supera la longitud máxima de 255 caracteres'
         ];
     }
 }

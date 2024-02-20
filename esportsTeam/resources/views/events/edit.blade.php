@@ -67,7 +67,7 @@
         <br>
 
         <label for="visible">Visible:</label>
-        <input type="checkbox" name="visible" id="visible">
+        <input type="checkbox" name="visible" id="visible" {{$event->visible == 1 ? 'checked' : ''}}>
         @error('visible')
             <br>Error: {{ $message }}
         @enderror

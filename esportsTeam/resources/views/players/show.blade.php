@@ -30,7 +30,7 @@
             @if ($player->visible == 0)
                 <li><a href="{{ route('players.make_visible_invisible', $player) }}">Hacer visible</a></li>
             @else
-                <li><a href="">Hacer invisible</a></li>
+                <li><a href="{{ route('players.make_visible_invisible', $player) }}">Hacer invisible</a></li>
             @endif
         @endif
     @endauth
