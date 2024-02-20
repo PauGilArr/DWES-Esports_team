@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CookieController;
+use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -22,6 +25,11 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
+
+Route::get('service/terms', [ServiceController::class, 'terms'])->name('service.terms');
+Route::get('cookies/politics', [CookieController::class, 'politics'])->name('cookies.politics');
+Route::get('cookies/settings', [CookieController::class, 'settings'])->name('cookies.settings');
+Route::get('privacy', [PrivacyController::class, 'politics'])->name('privacy.politics');
 
 Route::get('signup', [LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');
