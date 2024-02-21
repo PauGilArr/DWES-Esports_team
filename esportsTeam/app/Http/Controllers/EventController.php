@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra el listado de los eventos próximos.
+     * Si un administrador ha iniciado sesión, muestra todos los eventos guardados en la base de datos.
      */
     public function index()
     {
@@ -25,7 +26,7 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo evento.
      */
     public function create()
     {
@@ -33,7 +34,7 @@ class EventController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda el evento nuevo en la base de datos.
      */
     public function store(EventRequest $request)
     {
@@ -52,7 +53,7 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los detalles del evento especificado.
      */
     public function show(Event $event)
     {
@@ -60,7 +61,7 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar el evento especificado.
      */
     public function edit(Event $event)
     {
@@ -68,7 +69,7 @@ class EventController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el evento especificado en la base de datos.
      */
     public function update(EventRequest $request, Event $event)
     {
@@ -86,7 +87,7 @@ class EventController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Borra el evento especificado de la base de datos.
      */
     public function destroy(Event $event)
     {
@@ -110,6 +111,10 @@ class EventController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Guarda un like de un evento en la base de datos si no estaba ya antes.
+     * Si ya estaba antes, quita el like de la base de datos.
+     */
     public function eventLike(Event $event)
     {
         $event->users()->toggle(Auth::user()->id);

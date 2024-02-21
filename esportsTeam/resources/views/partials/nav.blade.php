@@ -4,7 +4,7 @@
     <a href="{{ route('events.index')}}">Eventos</a>
     <a href="{{ route('products.index')}}">Tienda</a>
     <a href="{{ route('messages.create')}}">Contacto</a>
-    <a href="{{ route('index')}}">¿Donde estamos?</a>
+    <a href="{{ route('location.index')}}">¿Donde estamos?</a>
     @auth
         @if (Auth::user()->rol == 'admin')
             <a href="{{ route('players.create')}}">Añadir jugador</a>

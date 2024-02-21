@@ -10,7 +10,8 @@ use App\Http\Requests\PlayerRequest;
 class PlayerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra la página del listado de jugadores visibles. Si ha iniciado sesión un administrador, se muestran todos los jugadores
+     * en la base de datos.
      */
     public function index()
     {
@@ -24,7 +25,7 @@ class PlayerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para añadir un jugador nuevo.
      */
     public function create()
     {
@@ -32,7 +33,7 @@ class PlayerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda el jugador nuevo en la base de datos.
      */
     public function store(PlayerRequest $request)
     {
@@ -52,7 +53,7 @@ class PlayerController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra la página de los detalles del jugador elegido.
      */
     public function show(Player $player)
     {
@@ -83,6 +84,9 @@ class PlayerController extends Controller
         //
     }
 
+    /**
+     * Hace que el jugador elegido aparezca en el listado de jugadores visibles o no.
+     */
     public function makeVisibleInvisible(Player $player) {
         if ($player->visible == 1) {
             $player->visible = 0;

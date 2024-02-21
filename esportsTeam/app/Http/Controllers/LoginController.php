@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+    /**
+     * Muestra el formulario para registrar un usuario nuevo.
+     */
     public function signupForm() {
         return view('auth.signup');
     }
 
+    /**
+     * Registra el usuario nuevo en la base de datos e inicia sesión como ese usuario.
+     */
     public function signup(SignupRequest $request) {
         $user = new User();
         $user->name = $request->get('name');
@@ -27,6 +33,10 @@ class LoginController extends Controller
         return redirect()->route('users.show', compact('user'));
     }
 
+    /**
+     * Muestra el usuario de inicio de sesión si no se ha iniciado sesión como usuario.
+     * En caso contrario, muestra los datos del perfil del usuario iniciado
+     */
     public function loginForm() {
         if (Auth::viaRemember()) {
             return redirect()->route('users.show');
@@ -37,6 +47,10 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Inicia sesión como usuario a partir de los datos del formulario y redirigirá a la pagina de los detalles del usuario.
+     * Si ha habido algun error, lo mostrará por pantalla.
+     */
     public function login(Request $request) {
         $credentials = $request->only('name', 'password');
         $rememberLogin = ($request->get('remember')) ? true : false;
@@ -45,11 +59,14 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->route('users.show', Auth::user());
         } else {
-            $error = 'Error al acceder a la aplicacion';
+            $error = 'Error al iniciar sesión';
             return view('auth.login', compact('error'));
         }
     }
 
+    /**
+     * Cierra la sesión y redirige a la página de inicio.
+     */
     public function logout(Request $request) {
         Auth::guard('web')->logout();
         $request->session()->invalidate();

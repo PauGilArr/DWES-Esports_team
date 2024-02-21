@@ -24,6 +24,10 @@
         <label for="remember">Recordar login</label>
         <br>
 
+        @isset($error)
+            <div>{{$error}}</div>
+        @endisset
+
         <input type="submit" value="Iniciar sesión">
     </form>
 @endsection

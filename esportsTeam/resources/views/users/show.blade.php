@@ -14,5 +14,6 @@
         <li>Nombre de usuario: {{$user->name}}</li>
         <li>Correo electrónico: {{$user->email}}</li>
         <li>Fecha de nacimiento: {{$user->birthday}}</li>
+        <li><a href="{{route('users.edit', $user)}}">Editar cuenta</a></li>
     </ul>
 @endsection

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('age');
             $table->integer('poles');
             $table->integer('wins');
-            $table->text('twitter');
-            $table->text('instagram');
-            $table->text('twitch');
+            $table->text('twitter')->nullable();
+            $table->text('instagram')->nullable();
+            $table->text('twitch')->nullable();
             $table->boolean('visible')->default(false);
             $table->timestamps();
         });

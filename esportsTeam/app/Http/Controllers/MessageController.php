@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra un listado de los mensajes recibidos.
      */
     public function index()
     {
@@ -18,7 +18,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para enviar un mensaje.
      */
     public function create()
     {
@@ -26,7 +26,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda el mensaje en la base de datos.
      */
     public function store(MessageRequest $request)
     {
@@ -40,7 +40,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el mensaje especificado.
      */
     public function show(Message $message)
     {
@@ -68,7 +68,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Borra el mensaje especificado de la base de datos.
      */
     public function destroy(Message $message)
     {

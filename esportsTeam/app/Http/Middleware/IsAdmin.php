@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 
 class IsAdmin
 {
@@ -16,7 +16,7 @@ class IsAdmin
      * @param  \Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         // Si el usuario no está autenticado, redireccionar al inicio
         if (!Auth::check()) {
@@ -24,7 +24,7 @@ class IsAdmin
         }
 
         // Si el usuario no tiene el rol "admin", redireccionar al inicio
-        if (!Auth::user()->rol == 'admin') {
+        if (Auth::user()->rol !== 'admin') {
             return redirect()->route('index');
         }
 

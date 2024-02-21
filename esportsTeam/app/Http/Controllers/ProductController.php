@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra un listado de los productos en la base de datos.
      */
     public function index()
     {
