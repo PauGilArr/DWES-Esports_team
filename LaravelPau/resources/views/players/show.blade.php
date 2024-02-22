@@ -13,7 +13,7 @@
 <!-- Contenido de la página -->
 @section('content')
 <div>
-    <img src="/storage/{{ $player->id }}.png" alt="{{ $player->name }} image">
+    <img src="/storage/{{ $player->id }}.png" alt="Imagen de {{ $player->name }}">
 </div>
 <ul>
     <li>Edad: {{ $player->age }}</li>
