@@ -35,7 +35,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los detalles del usuario especificado.
      */
     public function show(User $user)
     {
@@ -48,7 +48,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar el usuario especificado.
      */
     public function edit(User $user)
     {
@@ -56,7 +56,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el usuario especificado en la base de datos.
      */
     public function update(UserEditRequest $request, User $user)
     {
