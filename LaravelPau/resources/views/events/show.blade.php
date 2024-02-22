@@ -32,6 +32,12 @@
             @else
                 <a href="{{ route('events.make_visible_invisible', $event) }}">Hacer invisible</a>
             @endif
+            <form action="{{ route('events.destroy', $event)}}" method="POST">
+                @csrf
+                @method('delete')
+                <button type="submit">Borrar evento</button>
+            </form>
+            <a href="{{ route('events.edit', $event) }}">Editar evento</a>
         @endif
     @endauth
 @endsection

@@ -24,7 +24,11 @@
                             @else
                                 <a href="{{ route('events.make_visible_invisible', $event) }}">Hacer invisible</a>
                             @endif
-                            <a href="{{ route('events.destroy', $event) }}">Borrar evento</a>
+                            <form action="{{ route('events.destroy', $event)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit">Borrar evento</button>
+                            </form>
                             <a href="{{ route('events.edit', $event) }}">Editar evento</a>
                         @endif
                         @if ($event->users->contains(Auth::user()))
